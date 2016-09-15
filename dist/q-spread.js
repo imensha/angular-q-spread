@@ -1,7 +1,17 @@
-(function (angular) {
-    'use strict';
+'use strict';
 
-    angular
+(function (root, factory) {
+  if (typeof define === 'function' && define.amd) {
+    define(['angular'], function(angular) {
+      return factory(angular).name;
+    });
+  } else if (typeof module === 'object' && module.exports) {
+    module.exports = factory(require('angular')).name;
+  } else {
+    factory(root.angular);
+  }
+})(this, function (angular) {
+    return angular
         .module('$q-spread', [])
         .config(['$provide', function ($provide) {
 
@@ -32,4 +42,4 @@
                 return $delegate;
             }]);
         }]);
-})(window.angular);
+});
