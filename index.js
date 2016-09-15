@@ -1,1 +1,1 @@
-return require('./dist/q-spread.min.js');
+module.exports = require('./dist/q-spread.min.js');
